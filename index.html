@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            border: 1px solid black;
+           /* flex-wrap: wrap-reverse;*/
+        }
+
+        .container > li {
+            margin: 10px;
+            padding: 10px;
+            background-color: white;
+            list-style-type: none;
+            border-radius: 15px;
+        }
+
+        li .active{
+            background-color: aquamarine;
+        }
+
+        .container > li:hover{
+            background-color: aqua;
+        }
+
+        .container > li:hover a{
+            color: black;
+        }
+
+        body{
+            background-color: black;
+        }
+
+        @media screen and (min-width:480px) {
+            body{
+                background-color: cadetblue;
+            }
+            iframe{
+                height: 100%;
+                width: auto;
+            }
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            div > h1{
+                background-color: white;
+                padding: 20px 30px;
+                border-radius: 10px;
+            }
+        }
+
+        @media screen and (min-width: 780px){
+            body{
+                background-color: cornflowerblue;
+            }
+            iframe{
+                height: 100%;
+                width: auto;
+            }
+
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- <img src="night watch.webp" alt="Night Watch"> -->
+<div class="container">
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#auth" id="auth"></a></li>
+</div>
+<div>
+    <iframe  
+    src="https://www.youtube.com/embed/T9mAbKqBT5Q?autoplay=1&mute=1&controls=1">
+    </iframe>
+</div>
+<div>
+    <h1 id="time">Time</h1>
+</div>
+
+<div>
+    <form name="myForm">
+        <label for="name">Enter Name:</label><br>
+        <input type="text" name="name" id="name"><br>
+        <!-- <input type="file" name="file" id="file"><br> -->
+        <input type="submit" value="submit" id="check">
+    </form>
+    <p id="data"></p>
+</div>
+
+<script type="module">
+
+//import currentTime from "./time.js";
+
+setInterval(currentTime,1000);
+
+function currentTime() {
+    let d = new Date();
+    document.getElementById('time').innerHTML = 
+    d.getHours() + ":" +
+    d.getMinutes() + ":" +
+    d.getSeconds();
+}
+
+const x = document.forms["myForm"]["name"].value;
+
+document.getElementById('data').innerHTML = x;
+
+
+
+//document.getElementById('check').onclick = writeData();
+
+/*function writeData(){
+    document.getElementById('data').innerHTML = x.innerHTML;
+}*/
+    
+</script>
+      
+</body>
+</html>
+
+<!-- style="background-image: url(night_watch.webp); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;" -->
