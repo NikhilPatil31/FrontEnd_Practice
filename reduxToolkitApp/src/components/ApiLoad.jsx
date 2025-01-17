@@ -5,31 +5,28 @@ const ApiLoad = () => {
 
     const [data, setData] = useState([])
     
+    // useEffect(() => {
+    //     fetch("https://api.spacexdata.com/v3/launches")
+    //         .then(response => response.json())
+    //         .then(loadData => setData(loadData))
+    //         .catch(error => console.error('Error fetching data:',error))
+    // },[])
+
     useEffect(() => {
-        fetch("https://api.spacexdata.com/v4/rockets")
-            .then(response => response.json())
-            .then(loadData => setData(loadData))
-            .catch(error => console.error('Error fetching data:',error))
-    },[])
-
-    // console.log(data)
-
-    // const handleData = () => {
-    //     for(const [keys, values] of Object.entries(data)){
-    //         console.log(`${keys}: ${values}`)
-    //     }
-    // }
+        axios.get("https://api.spacexdata.com/v3/launches")
+            .then(response => setData(response.data))
+            .catch(error => console.error('Error fetching data:', error))
+    })
 
     return(
 
         <>
         <h1>Api Loading Page.</h1>
         <div>
-           {data.map((record,id) => (
+           { data.map((record,id) => (
                 <div key={id}>
                     {console.log(record)}
                     {JSON.stringify(record)}
-                    
                 </div>
             ))}
         </div>
